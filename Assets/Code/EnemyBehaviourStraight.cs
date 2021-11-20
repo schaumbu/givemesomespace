@@ -19,7 +19,8 @@ public class EnemyBehaviourStraight : Enemy {
         transform.position = new Vector3(x, Random.Range(yMin, yMax)) + transform.position - spawnBounds.center;
     }
 
-    private void Update() {
+    public override void Update() {
+        base.Update();
         transform.position += Vector3.right * Time.deltaTime * direction * speed;
     }
 }

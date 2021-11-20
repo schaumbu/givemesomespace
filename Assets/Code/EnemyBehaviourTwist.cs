@@ -28,7 +28,8 @@ public class EnemyBehaviourTwist : Enemy {
         }
     }
 
-    private void Update() {
+    public override void Update() {
+        base.Update();
         direction = Quaternion.AngleAxis(rotAngle * Time.deltaTime, Vector3.forward) * direction;
         
         transform.position += Time.deltaTime * speed * direction;

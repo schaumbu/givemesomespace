@@ -23,6 +23,10 @@ public class Enemy : MonoBehaviour {
         StartCoroutine(lifePointsRoutine());
     }
 
+    public virtual void Update() {
+        GetComponent<SpriteRenderer>().sortingOrder = (int)(transform.position.y * 1000);
+    }
+
     private void OnDestroy() {
         StopAllCoroutines();
     }

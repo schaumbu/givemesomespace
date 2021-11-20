@@ -32,7 +32,8 @@ public class EnemyBehaviourAngle : Enemy {
         direction = (transform.position - (cameraBounds.center + (Vector3)Random.insideUnitCircle * (cameraBounds.size.magnitude/3))).normalized;
     }
 
-    private void Update() {
+    public override void Update() {
+        base.Update();
         transform.Rotate(0,0,rotationSpeed * Time.deltaTime);
         transform.position += (Vector3)direction * Time.deltaTime * -speed;
     }

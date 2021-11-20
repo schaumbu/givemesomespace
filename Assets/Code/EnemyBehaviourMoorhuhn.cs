@@ -23,7 +23,8 @@ public class EnemyBehaviourMoorhuhn : Enemy {
         }
     }
 
-    private void Update() {
+    public override void Update() {
+        base.Update();
         transform.position += Vector3.right * Time.deltaTime * direction * speed;
     }
 }
