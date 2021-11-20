@@ -11,10 +11,10 @@ public class Weapon : MonoBehaviour {
 
     private void Update() {
         if (player) {
-            textMesh.text = player.score.ToString("D5");
+            textMesh.text = player.score.ToString();
         }
         else {
-            textMesh.text = "-----";
+            textMesh.text = "??????";
         }
     }
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b6f8a211d09cb314aa608fee2a964ef0
+guid: 67d6283ea49e5dd4da35633de4af71ea
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Open 24 Display St
+  - Digital-7 Mono
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
