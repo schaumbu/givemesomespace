@@ -10,7 +10,6 @@ public class EnemyBehaviourAngle : Enemy {
     public override void Start() {
         base.Start();
         var cameraBounds = Camera.main.orthographicBounds();
-        var b = Camera.main.orthographicBounds();
         var horizontal = Random.Range(0, 2) == 1;
         if (horizontal) {
             var x = Random.Range(0, 2) == 1
