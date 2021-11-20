@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Enemy : MonoBehaviour {
     private int lifePoints;
-    private bool inside => Camera.main.orthographicBounds().Intersects(GetComponent<Collider2D>().bounds);
-        
+    private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
+
+    public Bounds bounds => GetComponent<Collider2D>().bounds;
+
     // Start is called before the first frame update
     void Start() {
         StartCoroutine(lifeTimeRoutine());
