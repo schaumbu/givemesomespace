@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   bullet: {fileID: 7309798431410572278, guid: 980d545d471184d49aeef197ece17794, type: 3}
+  movementActivation: 40
 --- !u!114 &5163487403070692446
 MonoBehaviour:
   m_ObjectHideFlags: 0
