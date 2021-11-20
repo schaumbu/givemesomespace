@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,12 +9,21 @@ public class BulletSpawner : MonoBehaviour
 
     public GameObject spawnOrigin;
     public GameObject bullet;
+    private PlayerCrosshair playerCrosshair;
     
+    private void Start() {
+        playerCrosshair = gameObject.GetComponent<PlayerCrosshair>();
+    }
+
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             SpawnBullet();
+            var closestPoint = Physics2D.OverlapPoint(transform.position);
+            if (closestPoint != null) {
+                closestPoint.gameObject.GetComponent<Enemy>().onHit(playerCrosshair);
+            }
         }
     }
 

@@ -129,7 +129,7 @@ MonoBehaviour:
   target: {x: 0, y: 0}
   start: {x: 0, y: 0}
   timer: 0
-  maxFlightTime: 0.2
+  maxFlightTime: 0.1
   sqrtPower: 0.4
   bulletStartSize: 2.5
   bulletEndSize: 0.25
