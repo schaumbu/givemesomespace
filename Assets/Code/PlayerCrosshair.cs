@@ -36,9 +36,17 @@ public class PlayerCrosshair : MonoBehaviour {
         var component = blt.GetComponent<Bullet>();
         component.target = new Vector2(transform.position.x, transform.position.y);
         var collider = Physics2D.OverlapPoint(transform.position);
+        
         if (collider != null) {
-            collider.gameObject.GetComponent<Enemy>().onHit(this);
-            component.hitting = true;
+            var enemy = collider.gameObject.GetComponent<Enemy>();
+            var menuButton = collider.gameObject.GetComponent<MenuButton>();
+            if (enemy != null) {
+                enemy.onHit(this);
+            }
+
+            if (menuButton != null) {
+                menuButton.onClick();
+            }
         }
     }
 
