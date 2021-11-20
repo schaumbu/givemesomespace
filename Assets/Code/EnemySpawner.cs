@@ -27,8 +27,8 @@ public class EnemySpawner : MonoBehaviour {
                 // spawn big wave
                 yield return new WaitForSeconds(seconds*4 + Random.Range(0, randomWait));
 
-                for (int i = 0; i < maxEnemyCount; i++) {
-                    yield return new WaitForSeconds(seconds*.1f + Random.Range(0, randomWait * .1f));
+                for (int i = 0; i < maxEnemyCount*2; i++) {
+                    yield return new WaitForSeconds(seconds*.2f + Random.Range(0, randomWait * .1f));
                     spawnEnemy();
                 }
             }
