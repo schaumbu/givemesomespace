@@ -22,6 +22,15 @@ public class EnemySpawner : MonoBehaviour {
 
     IEnumerator spawnRoutine() {
         while (true) {
+            if (Random.Range(0, 100) == 0) {
+                // spawn big wave
+                yield return new WaitForSeconds(seconds*4 + Random.Range(0, randomWait));
+
+                for (int i = 0; i < maxEnemyCount; i++) {
+                    yield return new WaitForSeconds(seconds*.1f + Random.Range(0, randomWait * .1f));
+                    spawnEnemy();
+                }
+            }
             yield return new WaitUntil(() => enemyCount < maxEnemyCount);
             yield return new WaitForSeconds(seconds + Random.Range(0, randomWait));
             spawnEnemy();
