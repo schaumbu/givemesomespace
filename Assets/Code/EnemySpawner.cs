@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour {
     public EnemyType[] enemyTypes;
     public float seconds = 1;
+    public float randomWait = 1;
     public int maxEnemyCount = 4;
     private int enemyCount => FindObjectsOfType<Enemy>().Length;
 
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator spawnRoutine() {
         while (true) {
             yield return new WaitUntil(() => enemyCount < maxEnemyCount);
-            yield return new WaitForSeconds(seconds + Random.Range(0.5f, 1.5f));
+            yield return new WaitForSeconds(seconds + Random.Range(0, randomWait));
             spawnEnemy();
         }
     }

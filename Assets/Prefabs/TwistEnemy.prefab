@@ -150,10 +150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 1
-  speed: 5
+  speed: 7
   hitScore: 0
   lastHitScore: 160
   explosion: {fileID: 1309185446545666760, guid: 0e39e6104ca387c4cb1cbec2db04c723, type: 3}
   soul: {fileID: 7656197896966601982, guid: 265b9661bdddb21499e754e05b86be33, type: 3}
-  minAngle: 60
-  maxAngle: 80
+  minAngle: 70
+  maxAngle: 90
