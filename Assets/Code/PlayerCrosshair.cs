@@ -12,7 +12,9 @@ public class PlayerCrosshair : MonoBehaviour {
     public GameObject bullet;
     private Weapon weapon;
     private Vector2 move = Vector2.zero;
+    private Vector2 velocity = Vector2.zero;
     public int score { get; private set; }
+    public float movementActivation = 14;
 
     private void Awake() {
          weapon = FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
@@ -21,7 +23,8 @@ public class PlayerCrosshair : MonoBehaviour {
     }
 
     private void Update() {
-        transform.position += Time.deltaTime * speed * (Vector3) move;
+        velocity = Vector2.MoveTowards(velocity, move, Time.deltaTime * movementActivation);
+        transform.position += Time.deltaTime * speed * (Vector3) velocity;
 
         var border = Camera.main.orthographicBounds().size / 2 - Vector3.one;
         transform.position = Vector2.Max(Vector2.Min(transform.position, border), -border);
