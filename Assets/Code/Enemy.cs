@@ -1,18 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class Enemy : MonoBehaviour {
     public int lifePoints = 1;
     public float speed = 1;
     public int hitScore = 0;
     public int lastHitScore = 0;
+    public GameObject explosion;
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
     public Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one*.1f);
     private PlayerCrosshair lastHit = null;
+    private bool blink = false;
     
     public virtual void Start() {
         StartCoroutine(lifeTimeRoutine());
@@ -23,9 +26,27 @@ public class Enemy : MonoBehaviour {
         StopAllCoroutines();
     }
     public void onHit(PlayerCrosshair origin) {
-        lifePoints--;
-        lastHit = origin;
-        origin.addScore(hitScore);
+        if (!blink) {
+            lifePoints--;
+            lastHit = origin;
+            origin.addScore(hitScore);
+        }
+
+        StartCoroutine(blinkRoutine());
+    }
+
+    IEnumerator blinkRoutine() {
+        var ren = GetComponent<SpriteRenderer>();
+
+        blink = true;
+        foreach (var _ in Enumerable.Range(0, 5)) {
+            ren.enabled = false;
+            yield return new WaitForSeconds(.05f);
+            ren.enabled = true;
+            yield return new WaitForSeconds(.05f);
+        }
+
+        blink = false;
     }
 
     IEnumerator lifeTimeRoutine() {
@@ -37,6 +58,7 @@ public class Enemy : MonoBehaviour {
     IEnumerator lifePointsRoutine() {
         yield return new WaitWhile(() => lifePoints > 0);
         lastHit.addScore(lastHitScore);
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

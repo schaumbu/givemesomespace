@@ -21,21 +21,22 @@ public class PlayerCrosshair : MonoBehaviour {
     }
 
     private void Update() {
-        transform.position += Time.deltaTime * speed * (Vector3)move;
+        transform.position += Time.deltaTime * speed * (Vector3) move;
+
+        var border = Camera.main.orthographicBounds().size / 2 - Vector3.one;
+        transform.position = Vector2.Max(Vector2.Min(transform.position, border), -border);
     }
 
     [UsedImplicitly]
     public void OnShoot() {
-        spawnBullet();
+        var blt = Instantiate(bullet, weapon.transform.position, Quaternion.identity);
+        var component = blt.GetComponent<Bullet>();
+        component.target = new Vector2(transform.position.x, transform.position.y);
         var collider = Physics2D.OverlapPoint(transform.position);
         if (collider != null) {
             collider.gameObject.GetComponent<Enemy>().onHit(this);
+            component.hitting = true;
         }
-    }
-
-    void spawnBullet() {
-        var blt = Instantiate(bullet, weapon.transform.position, Quaternion.identity);
-        blt.GetComponent<Bullet>().target = new Vector2(transform.position.x, transform.position.y);
     }
 
     [UsedImplicitly]

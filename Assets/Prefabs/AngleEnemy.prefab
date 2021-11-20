@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadc538b845157b4c914ca17ba8d7ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 1
-  speed: 5
-  hitScore: 0
-  lastHitScore: 250
+  lifePoints: 3
+  speed: 4
+  hitScore: 50
+  lastHitScore: 150
+  explosion: {fileID: 1309185446545666760, guid: 0e39e6104ca387c4cb1cbec2db04c723, type: 3}

@@ -6,15 +6,16 @@ using UnityEngine;
 public class Bullet : MonoBehaviour {
     [NonSerialized] public Vector2 target;
     [NonSerialized] public Vector2 start;
-    private float timer;
     public float maxFlightTime;
-    public float sqrtPower;
-    public float bulletStartSize;
-    public float bulletEndSize;
+    public AnimationCurve travelDistance;
+    public AnimationCurve bulletSize;
+    public bool hitting = false;
+    private float timer = 0;
+
+    private Vector2 direction => target - start;
 
     private void Start() {
         start = transform.position;
-        timer = 0f;
     }
 
     void Update() {
@@ -24,8 +25,8 @@ public class Bullet : MonoBehaviour {
 
         timer += Time.deltaTime;
         var flightTime = timer / maxFlightTime;
-        transform.position = Vector2.Lerp(start, target, Mathf.Pow(flightTime, sqrtPower));
-        transform.localScale =
-            Vector3.one * Mathf.Lerp(bulletStartSize, bulletEndSize, Mathf.Pow(flightTime, sqrtPower));
+        transform.position = Vector2.Lerp(start, target, travelDistance.Evaluate(flightTime));
+        transform.localScale = Vector3.one * bulletSize.Evaluate(flightTime);
+        transform.rotation = Quaternion.AngleAxis(Vector2.SignedAngle(Vector2.up, direction), Vector3.forward);
     }
 }

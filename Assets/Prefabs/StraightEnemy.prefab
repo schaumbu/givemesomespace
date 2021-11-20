@@ -157,4 +157,5 @@ MonoBehaviour:
   lifePoints: 1
   speed: 10
   hitScore: 0
-  lastHitScore: 50
+  lastHitScore: 80
+  explosion: {fileID: 1309185446545666760, guid: 0e39e6104ca387c4cb1cbec2db04c723, type: 3}
