@@ -5,9 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
+    public ButtonType buttonType;
+    
+    public enum ButtonType {
+        startGame,
+        quitGame,
+        openOptions
+    }
+    
     public void onClick() {
-        
-        SceneManager.LoadScene("Janeks Scene");
+
+        switch (buttonType) {
+            case ButtonType.startGame:
+                SceneManager.LoadScene("Janeks Scene");
+                break;
+            case ButtonType.openOptions:
+                SceneManager.LoadScene("");
+                break;
+            case ButtonType.quitGame:
+                Application.Quit();
+                break;
+        }
         
     }
 }

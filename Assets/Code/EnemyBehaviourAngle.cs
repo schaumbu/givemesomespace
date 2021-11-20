@@ -6,6 +6,7 @@ using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
 
 public class EnemyBehaviourAngle : Enemy {
+    public float rotationSpeed = 50;
     private Vector2 direction;
     public override void Start() {
         base.Start();
@@ -32,6 +33,7 @@ public class EnemyBehaviourAngle : Enemy {
     }
 
     private void Update() {
+        transform.Rotate(0,0,rotationSpeed * Time.deltaTime);
         transform.position += (Vector3)direction * Time.deltaTime * -speed;
     }
 }

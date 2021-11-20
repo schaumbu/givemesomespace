@@ -17,7 +17,7 @@ public class PlayerCrosshair : MonoBehaviour {
     public float movementActivation = 14;
 
     private void Awake() {
-         weapon = FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
+        weapon = FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
         weapon.useBy(this);
         GetComponent<SpriteRenderer>().color = weapon.color;
     }

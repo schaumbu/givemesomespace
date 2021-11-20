@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1934239422021488194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.86, y: 2.23, z: 0}
-  m_LocalScale: {x: 0.38557005, y: 0.38557005, z: 0.38557005}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e22c650d4314c1f448ad74afefe0d56c, type: 3}
-  m_Color: {r: 1, g: 0.19339621, b: 0.19339621, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e188b6dc1ae050346bdb2150972a3f4c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.96, y: 8.43}
+  m_Size: {x: 6, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1934239422021488194}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2a0609b215e5e94bbd4f1fd4a2ba8be, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5118ffb396110f24c921759e2346a96c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,23 +120,20 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.373891, y: 0.6558265}
-    oldSize: {x: 10.96, y: 8.43}
-    newSize: {x: 10.96, y: 8.43}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 6, y: 6}
+    newSize: {x: 6, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.23710394, y: 2.2121308}
-      - {x: -2.4053833, y: 0.92854226}
-      - {x: -2.5033584, y: -0.77811885}
-      - {x: -1.9281863, y: -2.033722}
-      - {x: 0.0078656, y: -2.5321655}
-      - {x: 2.0507882, y: -1.5718315}
-      - {x: 2.5265846, y: 0.19462329}
-      - {x: 1.4907533, y: 2.006907}
+    - - {x: -2.8840797, y: 0.0027046204}
+      - {x: -2.2039597, y: -1.9643998}
+      - {x: 2.3890169, y: -1.8762732}
+      - {x: 3.3206513, y: -0.063045114}
+      - {x: 0.22498608, y: 2.1292605}
 --- !u!114 &7149321448999135356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +147,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 3
-  speed: 4
-  hitScore: 50
-  lastHitScore: 150
-  explosion: {fileID: 1309185446545666760, guid: 0e39e6104ca387c4cb1cbec2db04c723, type: 3}
+  speed: 3
+  hitScore: 30
+  lastHitScore: 100
+  explosion: {fileID: 1309185446545666760, guid: 3e8c7583464396d4c80b40cdb49f49a0, type: 3}
   soul: {fileID: 7656197896966601982, guid: 265b9661bdddb21499e754e05b86be33, type: 3}
+  rotationSpeed: 30

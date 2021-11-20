@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1934239422021488194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.86, y: 2.23, z: 0}
-  m_LocalScale: {x: 0.38825932, y: 0.38825932, z: 0.38825932}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e22c650d4314c1f448ad74afefe0d56c, type: 3}
-  m_Color: {r: 0.89701813, g: 0, b: 0.9056604, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 3c161f25c35b74549b6df30c869e3525, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1934239422021488194}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2a0609b215e5e94bbd4f1fd4a2ba8be, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa2781b1e216af04fa4ba300d02edf8b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,8 +120,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.373891, y: 0.6558265}
-    oldSize: {x: 10.96, y: 8.43}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
     newSize: {x: 10.96, y: 8.43}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -129,14 +129,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.64720875, y: 2.3127818}
-      - {x: -1.6916356, y: 1.8927686}
-      - {x: -2.7276027, y: -0.030156076}
-      - {x: -2.3314385, y: -1.6612371}
-      - {x: -1.1913464, y: -2.3998692}
-      - {x: 1.1118267, y: -2.2898042}
-      - {x: 2.5217166, y: -0.9072369}
-      - {x: 2.3867006, y: 0.9291806}
+    - - {x: 0.1525824, y: 1.3381166}
+      - {x: -2.2145503, y: 0.704758}
+      - {x: -1.8569291, y: -1.3044316}
+      - {x: 0.08392906, y: -1.6813937}
+      - {x: 1.9299383, y: -1.222099}
+      - {x: 2.2619042, y: 0.90144825}
 --- !u!114 &-2341192566355070619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +151,7 @@ MonoBehaviour:
   speed: 7
   hitScore: 0
   lastHitScore: 160
-  explosion: {fileID: 1309185446545666760, guid: 0e39e6104ca387c4cb1cbec2db04c723, type: 3}
+  explosion: {fileID: 1309185446545666760, guid: f641d4958f84a4947855550eb30440b5, type: 3}
   soul: {fileID: 7656197896966601982, guid: 265b9661bdddb21499e754e05b86be33, type: 3}
   minAngle: 70
   maxAngle: 90
