@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1934239422021488192}
   - component: {fileID: 1934239422021488193}
   - component: {fileID: 1934239422021488222}
-  - component: {fileID: 1962698312622160577}
+  - component: {fileID: 1270378051007624693}
   m_Layer: 0
   m_Name: PeepoEnemy
   m_TagString: Untagged
@@ -28,10 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1934239422021488194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.342, y: 0.342, z: 1.14}
-  m_Children:
-  - {fileID: 584228811292465696}
+  m_LocalPosition: {x: -2.86, y: 2.23, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -13716509
-  m_SortingLayer: 2
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0c5474bfa933d254fb92463cd02f0e7c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -130,20 +129,15 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.2509882, y: 6.432695}
-      - {x: 0.5497335, y: 6.2624693}
-      - {x: -3.2645767, y: 4.230446}
-      - {x: -5.1543207, y: 3.367414}
+    - - {x: -3.2645767, y: 4.230446}
       - {x: -6.7784004, y: 0.67625403}
-      - {x: -7.1691947, y: -4.3077445}
-      - {x: -5.46145, y: -7.3293724}
-      - {x: -2.292994, y: -7.482011}
-      - {x: -0.2081795, y: -6.614264}
-      - {x: 2.2730126, y: -7.701976}
-      - {x: 5.0426927, y: -6.0104923}
-      - {x: 5.885593, y: 0.36281648}
-      - {x: 4.5993223, y: 5.5096693}
---- !u!114 &1962698312622160577
+      - {x: -6.9604697, y: -3.9737842}
+      - {x: -5.62843, y: -6.9954123}
+      - {x: 1.5216011, y: -7.40976}
+      - {x: 4.321392, y: -6.3653297}
+      - {x: 5.217671, y: 0.36281648}
+      - {x: 3.5931644, y: 6.968597}
+--- !u!114 &1270378051007624693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,7 +146,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934239422021488194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2397ce449959cbe40a65dd0eca570d1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e93741303cab544299f708491e51e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 8
@@ -162,118 +156,3 @@ MonoBehaviour:
   explosion: {fileID: 1309185446545666760, guid: 942486724ab75f443aee9833bd96ad4e, type: 3}
   soul: {fileID: 7656197896966601982, guid: 265b9661bdddb21499e754e05b86be33, type: 3}
   rotationSpeed: 50
---- !u!1 &6296852965326812088
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 584228811292465696}
-  - component: {fileID: 7841686653517647079}
-  - component: {fileID: 779137811685680406}
-  - component: {fileID: 8265675670380701456}
-  m_Layer: 0
-  m_Name: PeepoEnemy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &584228811292465696
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296852965326812088}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27, y: -0.24, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1934239422021488223}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7841686653517647079
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296852965326812088}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 712442011
-  m_SortingLayer: 1
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0c5474bfa933d254fb92463cd02f0e7c, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.54509807}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 10.96, y: 8.43}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!95 &779137811685680406
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296852965326812088}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2a0609b215e5e94bbd4f1fd4a2ba8be, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8265675670380701456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296852965326812088}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3ebefab24d8c7742a6cd9b3828a1748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

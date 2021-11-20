@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour {
     public EnemyType[] enemyTypes;
@@ -10,7 +11,7 @@ public class EnemySpawner : MonoBehaviour {
     public int maxEnemyCount = 4;
     private int enemyCount => FindObjectsOfType<Enemy>().Length;
 
-    [System.Serializable]
+    [Serializable]
     public struct EnemyType {
         public GameObject enemy;
         public float probability;
