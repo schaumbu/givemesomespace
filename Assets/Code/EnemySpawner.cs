@@ -4,8 +4,12 @@ using System.Linq;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
-    private int enemyCount => FindObjectsOfType<Enemy>().Length;
     public EnemyType[] enemyTypes;
+    public float seconds = 1;
+    public int maxEnemyCount = 4;
+    private int enemyCount => FindObjectsOfType<Enemy>().Length;
+
+    [System.Serializable]
     public struct EnemyType {
         public GameObject enemy;
         public float probability;
@@ -17,8 +21,8 @@ public class EnemySpawner : MonoBehaviour {
 
     IEnumerator spawnRoutine() {
         while (true) {
-            yield return new WaitUntil(() => enemyCount <= 4);
-            yield return new WaitForSeconds(2);
+            yield return new WaitUntil(() => enemyCount < maxEnemyCount);
+            yield return new WaitForSeconds(seconds);
             spawnEnemy();
         }
     }

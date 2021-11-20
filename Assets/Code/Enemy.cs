@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Enemy : MonoBehaviour {
-    private int lifePoints;
+    public int lifePoints = 1;
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     public Bounds bounds => GetComponent<Collider2D>().bounds;
-
-    // Start is called before the first frame update
-    void Start() {
+    
+    public virtual void Start() {
         StartCoroutine(lifeTimeRoutine());
         StartCoroutine(lifePointsRoutine());
     }
@@ -18,7 +17,7 @@ public class Enemy : MonoBehaviour {
     private void OnDestroy() {
         StopAllCoroutines();
     }
-    void onHit(PlayerCrosshair origin) {
+    public void onHit(PlayerCrosshair origin) {
         lifePoints--;
     }
 

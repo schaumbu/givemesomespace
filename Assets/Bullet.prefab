@@ -123,13 +123,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7309798431410572278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a753306008e1e7f4894c07e945df6386, type: 3}
+  m_Script: {fileID: 11500000, guid: ad68a9e1762fdff44b4bffc9757aabc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0}
-  start: {x: 0, y: 0}
-  timer: 0
-  maxFlightTime: 0.1
+  maxFlightTime: 0.2
   sqrtPower: 0.4
-  bulletStartSize: 2.5
-  bulletEndSize: 0.25
+  bulletStartSize: 3
+  bulletEndSize: 0.1

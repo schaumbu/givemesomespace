@@ -19,7 +19,7 @@ public class BulletSpawner : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            SpawnBullet();
+            spawnBullet();
             var closestPoint = Physics2D.OverlapPoint(transform.position);
             if (closestPoint != null) {
                 closestPoint.gameObject.GetComponent<Enemy>().onHit(playerCrosshair);
@@ -27,7 +27,7 @@ public class BulletSpawner : MonoBehaviour
         }
     }
 
-    void SpawnBullet()
+    void spawnBullet()
     {
         var blt = Instantiate(bullet, spawnOrigin.transform.position, Quaternion.identity);
         blt.GetComponent<Bullet>().target = new Vector2(transform.position.x, transform.position.y);

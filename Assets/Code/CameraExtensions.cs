@@ -6,10 +6,11 @@ public static class CameraExtensions
 {
     public static Bounds orthographicBounds(this Camera camera)
     {
-        float screenAspect = (float)Screen.width / (float)Screen.height;
-        float cameraHeight = camera.orthographicSize * 2;
-        Bounds bounds = new Bounds(
-            camera.transform.position,
+        var screenAspect = Screen.width / (float)Screen.height;
+        var cameraHeight = camera.orthographicSize * 2;
+        var pos = new Vector2(camera.transform.position.x, camera.transform.position.y);
+        var bounds = new Bounds(
+            pos,
             new Vector3(cameraHeight * screenAspect, cameraHeight, 0));
         return bounds;
     }

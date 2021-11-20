@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5108684497010094261}
-  - component: {fileID: 4795792916565247004}
   - component: {fileID: 816477813497161749}
+  - component: {fileID: 840889788974776483}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -33,18 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4795792916565247004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536666323052210650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dcb44294f47f914f9abef348fe05b83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &816477813497161749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,11 +42,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 536666323052210650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cfdb53864df870478c7649a899d9aed, type: 3}
+  m_Script: {fileID: 11500000, guid: 198fd6ad7af79b246817c0b27385cf2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &840889788974776483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536666323052210650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7435d5611bc850648b70c1b9770a23b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOrigin: {fileID: 0}
-  bullet: {fileID: 0}
+  bullet: {fileID: 7309798431410572278, guid: 980d545d471184d49aeef197ece17794, type: 3}
 --- !u!1 &4844848139561857751
 GameObject:
   m_ObjectHideFlags: 0
