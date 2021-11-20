@@ -270,6 +270,8 @@ MonoBehaviour:
     probability: 1
   - enemy: {fileID: 1934239422021488194, guid: f0270db980d3fa24b89abd5db1e9fe17, type: 3}
     probability: 1
+  - enemy: {fileID: 1934239422021488194, guid: f5ac7d1c7c7edd247a66b1e3eef272f7, type: 3}
+    probability: 1
   seconds: 0.5
   maxEnemyCount: 20
 --- !u!4 &813820846
