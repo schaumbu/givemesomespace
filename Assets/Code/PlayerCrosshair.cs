@@ -12,10 +12,11 @@ public class PlayerCrosshair : MonoBehaviour {
     public GameObject bullet;
     private Weapon weapon;
     private Vector2 move = Vector2.zero;
+    public int score { get; private set; }
 
     private void Awake() {
         weapon = FindObjectsOfType<Weapon>().First(x => !x.used);
-        weapon.used = true;
+        weapon.useBy(this);
         GetComponent<SpriteRenderer>().color = weapon.color;
     }
 
@@ -40,5 +41,9 @@ public class PlayerCrosshair : MonoBehaviour {
     [UsedImplicitly]
     public void OnMove(InputValue value) {
         move = value.Get<Vector2>();
+    }
+
+    public void addScore(int addition) {
+        score += addition;
     }
 }

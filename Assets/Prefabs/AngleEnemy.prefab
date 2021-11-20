@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1934239422021488192}
   - component: {fileID: 1934239422021488193}
   - component: {fileID: 1934239422021488222}
-  - component: {fileID: 7134552544168808766}
+  - component: {fileID: 7149321448999135356}
   m_Layer: 0
-  m_Name: StraightEnemy
+  m_Name: AngleEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e22c650d4314c1f448ad74afefe0d56c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.19339621, b: 0.19339621, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,7 +142,7 @@ PolygonCollider2D:
       - {x: 1.9432191, y: -0.49981523}
       - {x: 0.4281174, y: 0.8118199}
       - {x: 0.083545685, y: 2.8956702}
---- !u!114 &7134552544168808766
+--- !u!114 &7149321448999135356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,8 +151,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1934239422021488194}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b35d9dad79f91542ab1a4e05cbb5c56, type: 3}
+  m_Script: {fileID: 11500000, guid: eadc538b845157b4c914ca17ba8d7ac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 1
-  speed: 10
+  speed: 5
+  hitScore: 0
+  lastHitScore: 250

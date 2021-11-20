@@ -47,8 +47,19 @@
                 },
                 {
                     "name": "",
+                    "id": "bd216edb-7ddf-4397-9fd7-1c2f41152f56",
+                    "path": "<HID::Twin USB Gamepad      >/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1ebb1677-01e8-4e37-9a9a-6f5ff16d38f1",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<HID::Twin USB Gamepad      >/stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -110,6 +121,17 @@
                     "action": "move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3fba8bcd-51b1-43d1-8fbf-4f2a257b1ac3",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

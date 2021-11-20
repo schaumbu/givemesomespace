@@ -6,10 +6,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     public int lifePoints = 1;
     public float speed = 1;
+    public int hitScore = 0;
+    public int lastHitScore = 0;
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
     public Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one*.1f);
+    private PlayerCrosshair lastHit = null;
     
     public virtual void Start() {
         StartCoroutine(lifeTimeRoutine());
@@ -21,6 +24,8 @@ public class Enemy : MonoBehaviour {
     }
     public void onHit(PlayerCrosshair origin) {
         lifePoints--;
+        lastHit = origin;
+        origin.addScore(hitScore);
     }
 
     IEnumerator lifeTimeRoutine() {
@@ -31,6 +36,7 @@ public class Enemy : MonoBehaviour {
 
     IEnumerator lifePointsRoutine() {
         yield return new WaitWhile(() => lifePoints > 0);
+        lastHit.addScore(lastHitScore);
         Destroy(gameObject);
     }
 }
