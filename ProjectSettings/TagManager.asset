@@ -38,6 +38,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: sky
+    uniqueID: 2359136989
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: croshair
+    uniqueID: 2697118999
     locked: 0
