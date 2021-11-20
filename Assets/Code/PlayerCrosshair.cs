@@ -15,7 +15,7 @@ public class PlayerCrosshair : MonoBehaviour {
     public int score { get; private set; }
 
     private void Awake() {
-         weapon = FindObjectsOfType<Weapon>().First(x => !x.used);
+         weapon = FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
         weapon.useBy(this);
         GetComponent<SpriteRenderer>().color = weapon.color;
     }
@@ -29,7 +29,7 @@ public class PlayerCrosshair : MonoBehaviour {
 
     [UsedImplicitly]
     public void OnShoot() {
-        var blt = Instantiate(bullet, weapon.transform.position, Quaternion.identity);
+        var blt = Instantiate(bullet, weapon.origin.transform.position, Quaternion.identity);
         var component = blt.GetComponent<Bullet>();
         component.target = new Vector2(transform.position.x, transform.position.y);
         var collider = Physics2D.OverlapPoint(transform.position);

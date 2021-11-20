@@ -245,6 +245,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 83175677}
     m_Modifications:
+    - target: {fileID: 3887884662113526877, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887884662113526877, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.02
+      objectReference: {fileID: 0}
     - target: {fileID: 3947572066503968655, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -2.44
@@ -310,6 +318,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7383747071819597636, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
+      propertyPath: order
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383747071819597636, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
       propertyPath: color.b
       value: 0.9607843
       objectReference: {fileID: 0}
@@ -368,7 +380,7 @@ MonoBehaviour:
     probability: 0.1
   - enemy: {fileID: 1934239422021488194, guid: f5ac7d1c7c7edd247a66b1e3eef272f7, type: 3}
     probability: 0.2
-  seconds: 1.5
+  seconds: 1
   maxEnemyCount: 10
 --- !u!4 &813820846
 Transform:
@@ -552,6 +564,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 83175677}
     m_Modifications:
+    - target: {fileID: 3887884662113526877, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3887884662113526877, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.97
+      objectReference: {fileID: 0}
     - target: {fileID: 7383747071410991308, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
       propertyPath: m_text
       value: 123456
