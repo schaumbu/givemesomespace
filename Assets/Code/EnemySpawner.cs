@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour {
     IEnumerator spawnRoutine() {
         while (true) {
             yield return new WaitUntil(() => enemyCount < maxEnemyCount);
-            yield return new WaitForSeconds(seconds);
+            yield return new WaitForSeconds(seconds + Random.Range(0.5f, 1.5f));
             spawnEnemy();
         }
     }

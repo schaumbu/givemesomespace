@@ -15,7 +15,7 @@ public class PlayerCrosshair : MonoBehaviour {
     public int score { get; private set; }
 
     private void Awake() {
-        weapon = FindObjectsOfType<Weapon>().First(x => !x.used);
+         weapon = FindObjectsOfType<Weapon>().First(x => !x.used);
         weapon.useBy(this);
         GetComponent<SpriteRenderer>().color = weapon.color;
     }
