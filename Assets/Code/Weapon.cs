@@ -1,16 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour {
     public Color color = Color.white;
-    public TMPro.TextMeshPro textMesh;
+    public TextMeshPro textMesh;
     public bool used => player != null;
     public Transform origin;
     public Transform soulTarget;
     public int order;
-    private PlayerCrosshair player = null;
+    private PlayerCrosshair player;
 
     private void Update() {
         if (player) {

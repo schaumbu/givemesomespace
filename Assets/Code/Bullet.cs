@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
@@ -9,7 +7,7 @@ public class Bullet : MonoBehaviour {
     public float maxFlightTime;
     public AnimationCurve travelDistance;
     public AnimationCurve bulletSize;
-    private float timer = 0;
+    private float timer;
 
     private Vector2 direction => target - start;
 

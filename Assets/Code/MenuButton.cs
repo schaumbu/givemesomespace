@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +15,7 @@ public class MenuButton : MonoBehaviour
 
         switch (buttonType) {
             case ButtonType.startGame:
+                ChooseGameMode.crossSceneInformation = GameModeManager.GameMode.first1000;
                 SceneManager.LoadScene("Janeks Scene");
                 break;
             case ButtonType.openOptions:

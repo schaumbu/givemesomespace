@@ -1,22 +1,21 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+
 [RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
 public class Enemy : MonoBehaviour {
     public int lifePoints = 1;
     public float speed = 1;
-    public int hitScore = 0;
-    public int lastHitScore = 0;
+    public int hitScore;
+    public int lastHitScore;
     public GameObject explosion;
     public GameObject soul;
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
     public Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one*.1f);
-    private PlayerCrosshair lastHit = null;
-    private bool blink = false;
+    private PlayerCrosshair lastHit;
+    private bool blink;
     
     public virtual void Start() {
         StartCoroutine(lifeTimeRoutine());
