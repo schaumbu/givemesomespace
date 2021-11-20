@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
     private void OnDestroy() {
         StopAllCoroutines();
     }
-    void onHit(object origin) {
+    void onHit(PlayerCrosshair origin) {
         lifePoints--;
     }
 
