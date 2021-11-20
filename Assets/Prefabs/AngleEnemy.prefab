@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1934239422021488194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.86, y: 2.23, z: 0}
-  m_LocalScale: {x: 0.32400844, y: 0.32400844, z: 0.32400844}
+  m_LocalScale: {x: 0.38557005, y: 0.38557005, z: 0.38557005}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -120,7 +120,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.373891, y: 0.6558265}
     oldSize: {x: 10.96, y: 8.43}
     newSize: {x: 10.96, y: 8.43}
     adaptiveTilingThreshold: 0.5
@@ -129,19 +129,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.5455602, y: 3.2490206}
-      - {x: -2.775701, y: 2.5826287}
-      - {x: -3.4875019, y: 0.8213116}
-      - {x: -3.6372452, y: -1.2916694}
-      - {x: -4.409009, y: -3.5730722}
-      - {x: -3.9965615, y: -3.960011}
-      - {x: -2.3658938, y: -4.2521634}
-      - {x: -1.1913464, y: -2.3998692}
-      - {x: -0.021515071, y: -4.1130056}
-      - {x: 2.2122262, y: -3.7721856}
-      - {x: 1.9432191, y: -0.49981523}
-      - {x: 0.4281174, y: 0.8118199}
-      - {x: 0.083545685, y: 2.8956702}
+    - - {x: -0.23710394, y: 2.2121308}
+      - {x: -2.4053833, y: 0.92854226}
+      - {x: -2.5033584, y: -0.77811885}
+      - {x: -1.9281863, y: -2.033722}
+      - {x: 0.0078656, y: -2.5321655}
+      - {x: 2.0507882, y: -1.5718315}
+      - {x: 2.5265846, y: 0.19462329}
+      - {x: 1.4907533, y: 2.006907}
 --- !u!114 &7149321448999135356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +154,4 @@ MonoBehaviour:
   hitScore: 50
   lastHitScore: 150
   explosion: {fileID: 1309185446545666760, guid: 0e39e6104ca387c4cb1cbec2db04c723, type: 3}
+  soul: {fileID: 7656197896966601982, guid: 265b9661bdddb21499e754e05b86be33, type: 3}

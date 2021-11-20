@@ -5,30 +5,32 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class EnemyBehaviourTwist : Enemy {
-    private int direction;
-    private Vector3 move = Vector3.up;
+
+    public float minAngle = 45;
+    public float maxAngle = 90;
+    private Vector3 direction = Vector3.up;
     private float rotAngle;
+
     public override void Start() {
         base.Start();
         var cameraBounds = Camera.main.orthographicBounds();
-        direction = Random.Range(0, 2) == 1 ? -1 : 1;
-        var y = Mathf.Sign(direction) > 0
+        direction = Random.Range(0, 2) == 1 ? Vector3.down : Vector3.up;
+        var y = Mathf.Sign(direction.y) > 0
             ? cameraBounds.min.y - spawnBounds.size.y / 2
             : cameraBounds.max.y + spawnBounds.size.y / 2;
         var xMin = cameraBounds.min.y + spawnBounds.size.y / 2;
         var xMax = cameraBounds.max.y - spawnBounds.size.y / 2;
         transform.position = new Vector3(Random.Range(xMin, xMax), y) + transform.position - spawnBounds.center;
-        rotAngle = Random.Range(1.5f, 2.5f);
-        if ((direction == -1 && transform.position.x > cameraBounds.center.x) ||
-            (direction == 1 && transform.position.x <= cameraBounds.center.x))
-
-            rotAngle = -rotAngle;
+        
+        rotAngle = Random.Range(minAngle, maxAngle);
+        if (Random.Range(0, 2) == 0) {
+            rotAngle *= -1;
+        }
     }
 
     private void Update() {
-        int rando = Random.Range(-1, 3);
-        transform.position += move * Time.deltaTime * direction * speed;
-        Quaternion q = Quaternion.AngleAxis(rotAngle * rando, Vector3.forward);
-        move = q * move; 
+        direction = Quaternion.AngleAxis(rotAngle * Time.deltaTime, Vector3.forward) * direction;
+        
+        transform.position += Time.deltaTime * speed * direction;
     }
 }

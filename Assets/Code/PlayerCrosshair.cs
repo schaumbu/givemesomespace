@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerCrosshair : MonoBehaviour {
     public float speed = 1;
     public GameObject bullet;
-    private Weapon weapon;
+    public Weapon weapon { get; private set; }
     private Vector2 move = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
     public int score { get; private set; }
@@ -35,15 +35,16 @@ public class PlayerCrosshair : MonoBehaviour {
         var blt = Instantiate(bullet, weapon.origin.transform.position, Quaternion.identity);
         var component = blt.GetComponent<Bullet>();
         component.target = new Vector2(transform.position.x, transform.position.y);
+        
         var collider = Physics2D.OverlapPoint(transform.position);
         
         if (collider != null) {
             var enemy = collider.gameObject.GetComponent<Enemy>();
-            var menuButton = collider.gameObject.GetComponent<MenuButton>();
             if (enemy != null) {
                 enemy.onHit(this);
             }
 
+            var menuButton = collider.gameObject.GetComponent<MenuButton>();
             if (menuButton != null) {
                 menuButton.onClick();
             }

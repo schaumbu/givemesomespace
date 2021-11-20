@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour {
     public float maxFlightTime;
     public AnimationCurve travelDistance;
     public AnimationCurve bulletSize;
-    public bool hitting = false;
     private float timer = 0;
 
     private Vector2 direction => target - start;

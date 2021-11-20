@@ -7,7 +7,8 @@ public class Weapon : MonoBehaviour {
     public Color color = Color.white;
     public TMPro.TextMeshPro textMesh;
     public bool used => player != null;
-    public GameObject origin;
+    public Transform origin;
+    public Transform soulTarget;
     public int order;
     private PlayerCrosshair player = null;
 

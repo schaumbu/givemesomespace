@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour {
     public int hitScore = 0;
     public int lastHitScore = 0;
     public GameObject explosion;
+    public GameObject soul;
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
@@ -59,6 +60,7 @@ public class Enemy : MonoBehaviour {
         yield return new WaitWhile(() => lifePoints > 0);
         lastHit.addScore(lastHitScore);
         Instantiate(explosion, transform.position, Quaternion.identity);
+        Instantiate(soul, transform.position, Quaternion.identity).GetComponent<Soul>().target = lastHit.weapon;
         Destroy(gameObject);
     }
 }
