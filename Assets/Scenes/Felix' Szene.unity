@@ -268,6 +268,8 @@ MonoBehaviour:
   enemyTypes:
   - enemy: {fileID: 1934239422021488194, guid: 95282d2539b63e64a993b09565237ef6, type: 3}
     probability: 1
+  - enemy: {fileID: 1934239422021488194, guid: f0270db980d3fa24b89abd5db1e9fe17, type: 3}
+    probability: 1
   seconds: 0.5
   maxEnemyCount: 20
 --- !u!4 &813820846
