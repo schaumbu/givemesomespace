@@ -71,8 +71,8 @@ public class @Actions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eabedbc7-80d4-4841-a221-5ceefccfb0fd"",
-                    ""path"": ""<Keyboard>/j"",
+                    ""id"": ""5c9f2a4a-e4c5-4d41-84cc-4ae0a7adbe4e"",
+                    ""path"": ""<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Trigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -150,6 +150,17 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""3fba8bcd-51b1-43d1-8fbf-4f2a257b1ac3"",
                     ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f2fd143-3153-458a-8609-b4f34208327b"",
+                    ""path"": ""<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

@@ -10,7 +10,6 @@ public class GameModeManager : MonoBehaviour {
     private PlayerCrosshair leading => players.OrderByDescending(x => x.score).First();
 
     public enum GameMode {
-        countdown,
         first1000,
         first5000,
         first10000
@@ -18,7 +17,7 @@ public class GameModeManager : MonoBehaviour {
 
     void Start() {
         mode = ChooseGameMode.crossSceneInformation;
-        StartCoroutine(mode == GameMode.countdown ? modeCountdownRoutine() : modeScoreRoutine());
+        StartCoroutine(modeScoreRoutine());
     }
 
     IEnumerator modeCountdownRoutine() {
