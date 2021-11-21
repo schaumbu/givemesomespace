@@ -6,8 +6,11 @@ public class Soul : MonoBehaviour {
     public Weapon target;
 
     public float speed = 10;
+    private SpriteRenderer spriteRenderer;
+
     void Start() {
-        GetComponent<SpriteRenderer>().color = target.color;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = target.color;
     }
 
     void Update() {
@@ -15,5 +18,9 @@ public class Soul : MonoBehaviour {
         if (transform.position == target.soulTarget.position) {
             Destroy(gameObject);
         }
+
+        var spriteRendererColor = spriteRenderer.color;
+        spriteRendererColor.a = Mathf.Clamp01(Vector2.Distance(transform.position, target.soulTarget.position) * .2f);
+        spriteRenderer.color = spriteRendererColor;
     }
 }

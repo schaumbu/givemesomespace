@@ -807,10 +807,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 8.729
       objectReference: {fileID: 0}
-    - target: {fileID: 7383747071410991308, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
-      propertyPath: m_text
-      value: 123456
-      objectReference: {fileID: 0}
     - target: {fileID: 7383747071410991310, guid: d2b887575ea2c5541b28a3cb27e1472f, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 2.4078999
