@@ -53,6 +53,9 @@ TagManager:
   - name: lazer
     uniqueID: 639821063
     locked: 0
+  - name: logo
+    uniqueID: 974749489
+    locked: 0
   - name: croshair
     uniqueID: 2697118999
     locked: 0

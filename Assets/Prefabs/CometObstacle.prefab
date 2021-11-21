@@ -279,6 +279,6 @@ MonoBehaviour:
   explosion: {fileID: 0}
   soul: {fileID: 0}
   deathSound: {fileID: 0}
-  collisionOrder: 100
+  collisionOrder: 2
   rotationSpeed: 30
   sizeRange: {x: 0.1, y: 1}

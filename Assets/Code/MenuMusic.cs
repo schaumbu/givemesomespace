@@ -7,12 +7,17 @@ using UnityEngine.SceneManagement;
 public class MenuMusic : MonoBehaviour {
     public AudioSource music;
     public AudioSource start;
+
     void Start() {
         DontDestroyOnLoad(gameObject);
-        SceneManager.sceneUnloaded += arg0 => {
+
+        void onUnloaded(Scene arg0) {
             music.Stop();
             start.Play();
-        };
+            SceneManager.sceneUnloaded -= onUnloaded;
+        }
+
+        SceneManager.sceneUnloaded += onUnloaded;
     }
 
     private void Update() {
