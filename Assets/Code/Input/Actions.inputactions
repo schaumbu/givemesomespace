@@ -58,6 +58,17 @@
                 },
                 {
                     "name": "",
+                    "id": "5c9f2a4a-e4c5-4d41-84cc-4ae0a7adbe4e",
+                    "path": "<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1ebb1677-01e8-4e37-9a9a-6f5ff16d38f1",
                     "path": "<HID::Twin USB Gamepad      >/stick",
                     "interactions": "",
@@ -126,6 +137,17 @@
                     "name": "",
                     "id": "3fba8bcd-51b1-43d1-8fbf-4f2a257b1ac3",
                     "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8f2fd143-3153-458a-8609-b4f34208327b",
+                    "path": "<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
