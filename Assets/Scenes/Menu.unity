@@ -133,8 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 411334520}
   - component: {fileID: 411334519}
-  - component: {fileID: 411334521}
   - component: {fileID: 411334518}
+  - component: {fileID: 411334521}
   m_Layer: 0
   m_Name: Spacebar
   m_TagString: Untagged

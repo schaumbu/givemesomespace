@@ -12,7 +12,7 @@ public class GameModeManager : MonoBehaviour {
         first10000
     }
 
-    public PlayerCrosshair[] players;
+    private PlayerCrosshair[] players;
 
     void Start() {
         mode = ChooseGameMode.crossSceneInformation;
