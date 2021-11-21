@@ -5,12 +5,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using Object = UnityEngine.Object;
 
-public class Actions : IInputActionCollection, IDisposable
+public class @Actions : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public Actions()
+    public @Actions()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Actions"",
@@ -63,6 +62,17 @@ public class Actions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""bd216edb-7ddf-4397-9fd7-1c2f41152f56"",
                     ""path"": ""<HID::Twin USB Gamepad      >/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5c9f2a4a-e4c5-4d41-84cc-4ae0a7adbe4e"",
+                    ""path"": ""<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Trigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -146,6 +156,17 @@ public class Actions : IInputActionCollection, IDisposable
                     ""action"": ""move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f2fd143-3153-458a-8609-b4f34208327b"",
+                    ""path"": ""<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -160,7 +181,7 @@ public class Actions : IInputActionCollection, IDisposable
 
     public void Dispose()
     {
-        Object.Destroy(asset);
+        UnityEngine.Object.Destroy(asset);
     }
 
     public InputBinding? bindingMask
@@ -209,10 +230,10 @@ public class Actions : IInputActionCollection, IDisposable
     private readonly InputAction m_inGame_move;
     public struct InGameActions
     {
-        private Actions m_Wrapper;
-        public InGameActions(Actions wrapper) { m_Wrapper = wrapper; }
-        public InputAction shoot => m_Wrapper.m_inGame_shoot;
-        public InputAction move => m_Wrapper.m_inGame_move;
+        private @Actions m_Wrapper;
+        public InGameActions(@Actions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @shoot => m_Wrapper.m_inGame_shoot;
+        public InputAction @move => m_Wrapper.m_inGame_move;
         public InputActionMap Get() { return m_Wrapper.m_inGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -222,26 +243,26 @@ public class Actions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_InGameActionsCallbackInterface != null)
             {
-                shoot.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                shoot.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                shoot.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                @shoot.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                @shoot.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                @shoot.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                @move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                @move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                @move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
             {
-                shoot.started += instance.OnShoot;
-                shoot.performed += instance.OnShoot;
-                shoot.canceled += instance.OnShoot;
-                move.started += instance.OnMove;
-                move.performed += instance.OnMove;
-                move.canceled += instance.OnMove;
+                @shoot.started += instance.OnShoot;
+                @shoot.performed += instance.OnShoot;
+                @shoot.canceled += instance.OnShoot;
+                @move.started += instance.OnMove;
+                @move.performed += instance.OnMove;
+                @move.canceled += instance.OnMove;
             }
         }
     }
-    public InGameActions inGame => new InGameActions(this);
+    public InGameActions @inGame => new InGameActions(this);
     public interface IInGameActions
     {
         void OnShoot(InputAction.CallbackContext context);
