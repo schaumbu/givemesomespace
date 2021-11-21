@@ -5,12 +5,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using Object = UnityEngine.Object;
 
-public class Actions : IInputActionCollection, IDisposable
+public class @Actions : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public Actions()
+    public @Actions()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Actions"",
@@ -63,6 +62,17 @@ public class Actions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""bd216edb-7ddf-4397-9fd7-1c2f41152f56"",
                     ""path"": ""<HID::Twin USB Gamepad      >/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eabedbc7-80d4-4841-a221-5ceefccfb0fd"",
+                    ""path"": ""<Keyboard>/j"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -146,6 +156,61 @@ public class Actions : IInputActionCollection, IDisposable
                     ""action"": ""move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""66d05668-1567-4d77-be2d-2bbc698a1cb9"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""ce6ba8d9-9532-4be2-be7e-f0924e75d836"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""e26a708a-8e21-461b-a802-76eee8c11381"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""bfcb605d-637a-49cd-8c3f-63c52c9c1991"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3b8d1b84-5427-482b-86c7-c71e0121446a"",
+                    ""path"": ""<Keyboard>/semicolon"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -160,7 +225,7 @@ public class Actions : IInputActionCollection, IDisposable
 
     public void Dispose()
     {
-        Object.Destroy(asset);
+        UnityEngine.Object.Destroy(asset);
     }
 
     public InputBinding? bindingMask
@@ -209,10 +274,10 @@ public class Actions : IInputActionCollection, IDisposable
     private readonly InputAction m_inGame_move;
     public struct InGameActions
     {
-        private Actions m_Wrapper;
-        public InGameActions(Actions wrapper) { m_Wrapper = wrapper; }
-        public InputAction shoot => m_Wrapper.m_inGame_shoot;
-        public InputAction move => m_Wrapper.m_inGame_move;
+        private @Actions m_Wrapper;
+        public InGameActions(@Actions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @shoot => m_Wrapper.m_inGame_shoot;
+        public InputAction @move => m_Wrapper.m_inGame_move;
         public InputActionMap Get() { return m_Wrapper.m_inGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -222,26 +287,26 @@ public class Actions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_InGameActionsCallbackInterface != null)
             {
-                shoot.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                shoot.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                shoot.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                @shoot.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                @shoot.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                @shoot.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                @move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                @move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                @move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
             if (instance != null)
             {
-                shoot.started += instance.OnShoot;
-                shoot.performed += instance.OnShoot;
-                shoot.canceled += instance.OnShoot;
-                move.started += instance.OnMove;
-                move.performed += instance.OnMove;
-                move.canceled += instance.OnMove;
+                @shoot.started += instance.OnShoot;
+                @shoot.performed += instance.OnShoot;
+                @shoot.canceled += instance.OnShoot;
+                @move.started += instance.OnMove;
+                @move.performed += instance.OnMove;
+                @move.canceled += instance.OnMove;
             }
         }
     }
-    public InGameActions inGame => new InGameActions(this);
+    public InGameActions @inGame => new InGameActions(this);
     public interface IInGameActions
     {
         void OnShoot(InputAction.CallbackContext context);

@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class GameModeManager : MonoBehaviour {
-    
     public GameMode mode;
-    
+    private PlayerCrosshair[] players => FindObjectsOfType<PlayerCrosshair>();
+    private int maxScore => players.Select(x => x.score).Append(int.MinValue).Max();
+    private PlayerCrosshair leading => players.OrderByDescending(x => x.score).First();
+
     public enum GameMode {
         countdown,
         first1000,
         first5000,
         first10000
     }
-
-    private PlayerCrosshair[] players;
 
     void Start() {
         mode = ChooseGameMode.crossSceneInformation;
@@ -24,25 +26,21 @@ public class GameModeManager : MonoBehaviour {
     }
 
     IEnumerator modeScoreRoutine() {
-        yield return new WaitUntil(() => FindObjectsOfType<PlayerCrosshair>().Length == 2);
-
         switch (mode) {
             case GameMode.first1000:
-                yield return new WaitUntil(() => players[0].score >= 1000 || players[1].score >= 1000);
-                Debug.Log("WINNER!");
+                yield return new WaitUntil(() => maxScore >= 1000);
+                Debug.Log($"Spieler {leading.weapon.side} hat gewonnen");
                 break;
+
             case GameMode.first5000:
-                yield return new WaitUntil(() => players[0].score >= 5000 || players[1].score >= 5000);
-                if(players[0].score > players[1].score)
-                    Debug.Log("Spieler 1 gewinnt!");
-                else 
-                    Debug.Log("Spieler 2 gewinnt!");
+                yield return new WaitUntil(() => maxScore >= 5000);
+                Debug.Log($"Spieler {leading.weapon.side} hat gewonnen");
                 break;
+
             case GameMode.first10000:
-                yield return new WaitUntil(() => players[0].score >= 10000 || players[1].score >= 10000);
+                yield return new WaitUntil(() => maxScore >= 10000);
+                Debug.Log($"Spieler {leading.weapon.side} hat gewonnen");
                 break;
         }
     }
-
-
 }
