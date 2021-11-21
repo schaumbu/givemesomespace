@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b75e92d3864843c6b79169a88760d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 6
+  buttonType: 5
 --- !u!60 &820172569
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b75e92d3864843c6b79169a88760d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonType: 5
+  buttonType: 3
 --- !u!60 &1618948079
 PolygonCollider2D:
   m_ObjectHideFlags: 0
