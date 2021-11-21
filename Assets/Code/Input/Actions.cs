@@ -82,17 +82,6 @@ public class @Actions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""eabedbc7-80d4-4841-a221-5ceefccfb0fd"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""shoot"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""1ebb1677-01e8-4e37-9a9a-6f5ff16d38f1"",
                     ""path"": ""<HID::Twin USB Gamepad      >/stick"",
                     ""interactions"": """",
@@ -161,6 +150,17 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""3fba8bcd-51b1-43d1-8fbf-4f2a257b1ac3"",
                     ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f2fd143-3153-458a-8609-b4f34208327b"",
+                    ""path"": ""<Linux::PersonalCommunicationSystemsInc::GSA5120DDVDRW>/Stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

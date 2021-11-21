@@ -12,20 +12,23 @@ public class Enemy : MonoBehaviour {
     public GameObject soul;
     public GameObject deathSound;
     public Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one*.1f);
+    public int collisionOrder = 0;
 
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
     private PlayerCrosshair lastHit;
     private bool blink;
-    
+    private SpriteRenderer spriteRenderer;
+
     public virtual void Start() {
         StartCoroutine(lifeTimeRoutine());
         StartCoroutine(lifePointsRoutine());
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public virtual void Update() {
-        GetComponent<SpriteRenderer>().sortingOrder = (int)(transform.position.y * 1000);
+        spriteRenderer.sortingOrder = (int)(transform.position.y * 100 + collisionOrder*1000);
     }
 
     private void OnDestroy() {
@@ -42,7 +45,7 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator blinkRoutine() {
-        var ren = GetComponent<SpriteRenderer>();
+        var ren = spriteRenderer;
 
         blink = true;
         foreach (var _ in Enumerable.Range(0, 5)) {
