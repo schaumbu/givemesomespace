@@ -31,19 +31,19 @@ public class PlayerCrosshair : MonoBehaviour {
         var blt = Instantiate(bullet, weapon.origin.transform.position, Quaternion.identity);
         var component = blt.GetComponent<Bullet>();
         component.target = new Vector2(transform.position.x, transform.position.y);
-        
-        var collider = Physics2D.OverlapPoint(transform.position);
-        
-        if (collider != null) {
-            var enemy = collider.gameObject.GetComponent<Enemy>();
-            if (enemy != null) {
-                enemy.onHit(this);
-            }
 
-            var menuButton = collider.gameObject.GetComponent<MenuButton>();
-            if (menuButton != null) {
-                menuButton.onClick();
-            }
+        var colliders = Physics2D.OverlapPointAll(transform.position);
+        var enemy = colliders
+            .Where(x => x.GetComponent<Enemy>() != null)
+            .Select(x => x.GetComponent<Enemy>())
+            .OrderBy(x => x.collisionOrder).LastOrDefault();
+        if (enemy != null) {
+            enemy.onHit(this);
+        }
+
+        var buttons = colliders.Where(x => x.GetComponent<MenuButton>() != null).Select(x => x.GetComponent<MenuButton>());
+        foreach (var button in buttons) {
+            button.onClick();
         }
     }
 

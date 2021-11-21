@@ -12,6 +12,7 @@ public class PlayRandomSound : MonoBehaviour {
 
     private void Awake() {
         source = GetComponent<AudioSource>();
+        DontDestroyOnLoad(gameObject);
     }
 
     void Start() {
