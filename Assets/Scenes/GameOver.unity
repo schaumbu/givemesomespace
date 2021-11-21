@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winnerLeft: {fileID: 4552519336666326732, guid: 0b925cf28a0e01d4e8e9b2a0fc7de9b3, type: 3}
-  winnerRight: {fileID: 1938796836915186486, guid: 9515233f580817c4297821e703e94594, type: 3}
+  winnerRight: {fileID: 2902793195473043195, guid: 9515233f580817c4297821e703e94594, type: 3}
 --- !u!4 &868169592
 Transform:
   m_ObjectHideFlags: 0
