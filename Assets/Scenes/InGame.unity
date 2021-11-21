@@ -294,17 +294,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - enemy: {fileID: 1934239422021488194, guid: 95282d2539b63e64a993b09565237ef6, type: 3}
-    probability: 0.47
+    probability: 60
   - enemy: {fileID: 1934239422021488194, guid: f0270db980d3fa24b89abd5db1e9fe17, type: 3}
-    probability: 0.12
+    probability: 15
   - enemy: {fileID: 1934239422021488194, guid: f5ac7d1c7c7edd247a66b1e3eef272f7, type: 3}
-    probability: 0.17
+    probability: 20
   - enemy: {fileID: 1934239422021488194, guid: d1f34262b2783dc45bbb39dbac38dea0, type: 3}
-    probability: 0.02
+    probability: 3
   - enemy: {fileID: 1934239422021488194, guid: a005bccc216a7424d84050aebcd2ce35, type: 3}
-    probability: 0.07
+    probability: 10
   - enemy: {fileID: 1934239422021488194, guid: ca64ec55d7f4ea14f83a320560834ef3, type: 3}
-    probability: 0.15
+    probability: 10
+  - enemy: {fileID: 1934239422021488194, guid: bca5169cb3263c54383a163c368b0621, type: 3}
+    probability: 20
   seconds: 0.85
   randomWait: 1
   maxEnemyCount: 10
@@ -517,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 1839760052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

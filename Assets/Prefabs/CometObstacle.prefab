@@ -281,3 +281,4 @@ MonoBehaviour:
   deathSound: {fileID: 0}
   collisionOrder: 100
   rotationSpeed: 30
+  sizeRange: {x: 0.1, y: 1}
