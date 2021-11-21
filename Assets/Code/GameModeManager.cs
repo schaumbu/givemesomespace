@@ -24,6 +24,7 @@ public class GameModeManager : MonoBehaviour {
     }
 
     IEnumerator modeScoreRoutine() {
+        yield return new WaitForSeconds(5);
         players = FindObjectsOfType<PlayerCrosshair>();
         while (players.Length < 2) {
             players = FindObjectsOfType<PlayerCrosshair>();

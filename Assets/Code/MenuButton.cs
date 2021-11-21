@@ -15,7 +15,7 @@ public class MenuButton : MonoBehaviour
 
         switch (buttonType) {
             case ButtonType.startGame:
-                ChooseGameMode.crossSceneInformation = GameModeManager.GameMode.first5000;
+                ChooseGameMode.crossSceneInformation = GameModeManager.GameMode.first1000;
                 SceneManager.LoadScene("InGame");
                 break;
             case ButtonType.openOptions:
