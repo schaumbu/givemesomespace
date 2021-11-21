@@ -9,7 +9,7 @@ public class MenuButton : MonoBehaviour
     public enum ButtonType {
         startGame,
         quitGame,
-        openOptions,
+        openMain,
         first1000,
         first5000,
         first10000
@@ -21,8 +21,8 @@ public class MenuButton : MonoBehaviour
             case ButtonType.startGame:
                 SceneManager.LoadScene("ModeMenu");
                 break;
-            case ButtonType.openOptions:
-                SceneManager.LoadScene("");
+            case ButtonType.openMain:
+                SceneManager.LoadScene("Menu");
                 break;
             case ButtonType.quitGame:
                 Application.Quit();

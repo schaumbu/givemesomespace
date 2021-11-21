@@ -109,7 +109,7 @@ RectTransform:
   m_GameObject: {fileID: 4552519336666326732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
   - {fileID: 4552519336027537103}
   - {fileID: 4552519336997699848}
@@ -140,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -261587533975429032, guid: fd6604b526751654896f661e9814fa82, type: 2}
+  - {fileID: -261587533975429032, guid: 6a1ad85b5ef4d204db8417c5e6664d37, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -185,13 +185,13 @@ MonoBehaviour:
   m_text: This dude won!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6a1ad85b5ef4d204db8417c5e6664d37, type: 2}
-  m_sharedMaterial: {fileID: -261587533975429032, guid: fd6604b526751654896f661e9814fa82, type: 2}
+  m_sharedMaterial: {fileID: -261587533975429032, guid: 6a1ad85b5ef4d204db8417c5e6664d37, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
