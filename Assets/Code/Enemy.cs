@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
     public float speed = 1;
     public int hitScore;
     public int lastHitScore;
+    public bool blinkable = true;
     public GameObject explosion;
     public GameObject soul;
     public GameObject deathSound;
@@ -28,7 +29,7 @@ public class Enemy : MonoBehaviour {
     }
 
     public virtual void Update() {
-        spriteRenderer.sortingOrder = (int)(transform.position.y * 100 + collisionOrder*1000);
+        spriteRenderer.sortingOrder = (int)(transform.position.y * 100 + -collisionOrder*1000);
     }
 
     private void OnDestroy() {
@@ -41,7 +42,8 @@ public class Enemy : MonoBehaviour {
             origin.addScore(hitScore);
         }
 
-        StartCoroutine(blinkRoutine());
+        if(blinkable)
+            StartCoroutine(blinkRoutine());
     }
 
     IEnumerator blinkRoutine() {

@@ -1,4 +1,7 @@
+using System;
+using UnityEditor.UIElements;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyBehaviourComet : Enemy {
     public float rotationSpeed = 50;
