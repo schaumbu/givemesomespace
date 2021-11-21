@@ -7,5 +7,7 @@ public class Shadow : MonoBehaviour {
 
     void Update() {
         transform.position = transform.parent.position + (Vector3) offset;
+        GetComponent<SpriteRenderer>().enabled =
+            transform.parent.GetComponent<SpriteRenderer>().enabled;
     }
 }
