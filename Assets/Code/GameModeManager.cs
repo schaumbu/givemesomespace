@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameModeManager : MonoBehaviour {
     public GameMode mode;
@@ -28,17 +29,20 @@ public class GameModeManager : MonoBehaviour {
         switch (mode) {
             case GameMode.first1000:
                 yield return new WaitUntil(() => maxScore >= 1000);
-                Debug.Log($"Spieler {leading.weapon.side} hat gewonnen");
+                ChooseVictor.crossSceneInformation = leading.side;
+                SceneManager.LoadScene("GameOver");
                 break;
 
             case GameMode.first5000:
                 yield return new WaitUntil(() => maxScore >= 5000);
-                Debug.Log($"Spieler {leading.weapon.side} hat gewonnen");
+                ChooseVictor.crossSceneInformation = leading.side;
+                SceneManager.LoadScene("GameOver");
                 break;
 
             case GameMode.first10000:
                 yield return new WaitUntil(() => maxScore >= 10000);
-                Debug.Log($"Spieler {leading.weapon.side} hat gewonnen");
+                ChooseVictor.crossSceneInformation = leading.side;
+                SceneManager.LoadScene("GameOver");
                 break;
         }
     }

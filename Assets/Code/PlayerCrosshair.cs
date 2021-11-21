@@ -11,11 +11,22 @@ public class PlayerCrosshair : MonoBehaviour {
     private Vector2 velocity = Vector2.zero;
     public int score { get; private set; }
     public float movementActivation = 14;
-
+    public enum LeftRight {
+        left,
+        right
+    };
+    public LeftRight side;
+    
     private void Awake() {
         weapon = FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
         weapon.useBy(this);
         GetComponent<SpriteRenderer>().color = weapon.color;
+        if (FindObjectsOfType<PlayerCrosshair>().Length == 1) {
+            side = LeftRight.left;
+        }
+        else {
+            side = LeftRight.right;
+        }
     }
 
     private void Update() {

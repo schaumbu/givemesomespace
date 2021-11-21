@@ -11,12 +11,6 @@ public class Weapon : MonoBehaviour {
     public int order;
     public GameObject weaponSound;
 
-    public enum LeftRight {
-        left,
-        right
-    };
-
-    public LeftRight side;
     private PlayerCrosshair player;
     
 
