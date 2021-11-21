@@ -260,3 +260,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   laserParticle: {fileID: 1217667138476067400, guid: 62ccc9bc9ff1eb9458729dee2ea51076, type: 3}
   stretch: 0.4
+  bulletSound: {fileID: 8536742226880402610, guid: 74e496dc444f24b419b09e3d17b2a3d3, type: 3}

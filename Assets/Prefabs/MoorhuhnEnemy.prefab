@@ -156,6 +156,7 @@ MonoBehaviour:
   lastHitScore: 300
   explosion: {fileID: 1309185446545666760, guid: 9cc9bfa64ca9fc247bce0c581e7160fe, type: 3}
   soul: {fileID: 7656197896966601982, guid: 265b9661bdddb21499e754e05b86be33, type: 3}
+  deathSound: {fileID: 2992911090881071653, guid: 840fac7272ff17749824b1d31a1bebb6, type: 3}
 --- !u!1 &2568826949196552043
 GameObject:
   m_ObjectHideFlags: 0

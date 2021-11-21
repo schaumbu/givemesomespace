@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -8,7 +9,12 @@ public class Weapon : MonoBehaviour {
     public Transform origin;
     public Transform soulTarget;
     public int order;
+    public GameObject weaponSound;
     private PlayerCrosshair player;
+
+    private void Start() {
+        Instantiate(weaponSound);
+    }
 
     private void Update() {
         if (player) {

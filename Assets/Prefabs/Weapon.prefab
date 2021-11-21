@@ -618,3 +618,4 @@ MonoBehaviour:
   origin: {fileID: 3887884662113526877}
   soulTarget: {fileID: 4893763737941209728}
   order: 0
+  weaponSound: {fileID: 5364231533936644738, guid: d2976808970f5bb489f93a8393a3648c, type: 3}

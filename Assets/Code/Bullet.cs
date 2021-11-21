@@ -10,12 +10,14 @@ public class Bullet : MonoBehaviour {
     public AnimationCurve bulletSize;
     public GameObject laserParticle = null;
     public float stretch = 1f;
+    public GameObject bulletSound;
     private float timer;
 
     private Vector2 direction => target - start;
 
     private void Start() {
         start = transform.position;
+        Instantiate(bulletSound);
         Instantiate(laserParticle, transform.position, Quaternion.AngleAxis(Random.Range(-5f, 5f), Vector3.forward));
     }
 

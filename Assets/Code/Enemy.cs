@@ -10,10 +10,12 @@ public class Enemy : MonoBehaviour {
     public int lastHitScore;
     public GameObject explosion;
     public GameObject soul;
+    public GameObject deathSound;
+    public Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one*.1f);
+
     private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
-    public Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one*.1f);
     private PlayerCrosshair lastHit;
     private bool blink;
     
@@ -60,8 +62,9 @@ public class Enemy : MonoBehaviour {
     }
 
     IEnumerator lifePointsRoutine() {
-        yield return new WaitWhile(() => lifePoints > 0);
+        yield return new WaitWhile(()=> lifePoints > 0);
         lastHit.addScore(lastHitScore);
+        Instantiate(deathSound);
         Instantiate(explosion, transform.position, Quaternion.identity);
         Instantiate(soul, transform.position, Quaternion.identity).GetComponent<Soul>().target = lastHit.weapon;
         Destroy(gameObject);
