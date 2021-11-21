@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 7232dd8f0a8fa45e2a807270767cd763
   - enabled: 1
-    path: Assets/Scenes/Janeks Scene.unity
-    guid: e52bcede7e045884587dfa32fd7bd5a4
+    path: Assets/Scenes/InGame.unity
+    guid: d2e26e8d49bf21047ad2bbede3bb66c6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 96d1bce0259a41e43a15ff69c62a62de, type: 2}
