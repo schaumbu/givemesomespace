@@ -24,11 +24,7 @@ public class GameModeManager : MonoBehaviour {
     }
 
     IEnumerator modeScoreRoutine() {
-        yield return new WaitForSeconds(5);
-        players = FindObjectsOfType<PlayerCrosshair>();
-        while (players.Length < 2) {
-            players = FindObjectsOfType<PlayerCrosshair>();
-        }
+        yield return new WaitUntil(() => FindObjectsOfType<PlayerCrosshair>().Length == 2);
 
         switch (mode) {
             case GameMode.first1000:
