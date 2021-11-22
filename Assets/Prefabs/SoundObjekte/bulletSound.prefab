@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.6725063, y: 0.45045656, z: -11.767535}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -46,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   source: {fileID: 0}
   audioClips:
+  - {fileID: 8300000, guid: 8e8a04e1111bbbc42bcdb5fd3c84d07d, type: 3}
   - {fileID: 8300000, guid: a1a38a581a345fd49b19d865c812e57a, type: 3}
   - {fileID: 8300000, guid: dc63d96d7ee11f8479cb0d70a06bab57, type: 3}
-  - {fileID: 8300000, guid: 8e8a04e1111bbbc42bcdb5fd3c84d07d, type: 3}
 --- !u!82 &230474409543239813
 AudioSource:
   m_ObjectHideFlags: 0

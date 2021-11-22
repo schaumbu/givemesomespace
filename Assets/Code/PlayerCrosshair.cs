@@ -1,32 +1,32 @@
+using System;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerCrosshair : MonoBehaviour {
-    public float speed = 1;
-    public GameObject bullet;
+    [SerializeField] private float speed = 1;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private float movementActivation = 14;
+    [SerializeField] public LeftRight side;
+
+    public int score { get; private set; }
     public Weapon weapon { get; private set; }
+
     private Vector2 move = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
-    public int score { get; private set; }
-    public float movementActivation = 14;
+
     public enum LeftRight {
         left,
         right
-    };
-    public LeftRight side;
-    
+    }
+
     private void Awake() {
-        weapon = FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
+        weapon = Weapon.grabFree();
         weapon.useBy(this);
         GetComponent<SpriteRenderer>().color = weapon.color;
-        if (FindObjectsOfType<PlayerCrosshair>().Length == 1) {
-            side = LeftRight.left;
-        }
-        else {
-            side = LeftRight.right;
-        }
+        // todo
+        side = FindObjectsOfType<PlayerCrosshair>().Length == 1 ? LeftRight.left : LeftRight.right;
     }
 
     private void Update() {
@@ -52,7 +52,8 @@ public class PlayerCrosshair : MonoBehaviour {
             enemy.onHit(this);
         }
 
-        var buttons = colliders.Where(x => x.GetComponent<MenuButton>() != null).Select(x => x.GetComponent<MenuButton>());
+        var buttons = colliders.Where(x => x.GetComponent<MenuButton>() != null)
+            .Select(x => x.GetComponent<MenuButton>());
         foreach (var button in buttons) {
             button.onClick();
         }

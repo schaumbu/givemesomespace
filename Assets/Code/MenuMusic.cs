@@ -5,10 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuMusic : MonoBehaviour {
-    public AudioSource music;
-    public AudioSource start;
+    [SerializeField] private AudioSource music;
+    [SerializeField] private AudioSource start;
 
-    void Start() {
+    private void Start() {
         DontDestroyOnLoad(gameObject);
 
         void onUnloaded(Scene arg0) {

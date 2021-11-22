@@ -17,11 +17,11 @@ public class EnemySpawner : MonoBehaviour {
         public float probability;
     }
 
-    void Start() {
+    private void Start() {
         StartCoroutine(spawnRoutine());
     }
 
-    IEnumerator spawnRoutine() {
+    private IEnumerator spawnRoutine() {
         while (true) {
             if (Random.Range(0, 100) == 0) {
                 // spawn big wave
@@ -38,7 +38,7 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    void spawnEnemy() {
+    private void spawnEnemy() {
         var rangeMax = enemyTypes.Sum(enemyType => enemyType.probability);
         var diceRoll = Random.Range(0, rangeMax);
 
@@ -52,7 +52,7 @@ public class EnemySpawner : MonoBehaviour {
         }
     }
 
-    void spawnType(EnemyType enemyType) {
+    private void spawnType(EnemyType enemyType) {
         Instantiate(enemyType.enemy);
     }
 }

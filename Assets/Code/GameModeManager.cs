@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using Code;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameModeManager : MonoBehaviour {
-    public GameMode mode;
-    private PlayerCrosshair[] players => FindObjectsOfType<PlayerCrosshair>();
+    [SerializeField] private GameMode mode;
+    private IEnumerable<PlayerCrosshair> players => FindObjectsOfType<PlayerCrosshair>();
     private int maxScore => players.Select(x => x.score).Append(int.MinValue).Max();
     private PlayerCrosshair leading => players.OrderByDescending(x => x.score).First();
 
@@ -16,34 +18,23 @@ public class GameModeManager : MonoBehaviour {
         first10000
     }
 
-    void Start() {
-        mode = ChooseGameMode.crossSceneInformation;
+    private void Start() {
+        mode = Persistent.gameMode;
         StartCoroutine(modeScoreRoutine());
     }
 
-    IEnumerator modeCountdownRoutine() {
-        yield return new WaitForSeconds(60);
+    private IEnumerator modeScoreRoutine() {
+        yield return new WaitUntil(() => maxScore >= gameModePoints(mode));
+        Persistent.winner = leading.side;
+        SceneManager.LoadScene("GameOver");
     }
 
-    IEnumerator modeScoreRoutine() {
-        switch (mode) {
-            case GameMode.first1000:
-                yield return new WaitUntil(() => maxScore >= 1000);
-                ChooseVictor.crossSceneInformation = leading.side;
-                SceneManager.LoadScene("GameOver");
-                break;
-
-            case GameMode.first5000:
-                yield return new WaitUntil(() => maxScore >= 5000);
-                ChooseVictor.crossSceneInformation = leading.side;
-                SceneManager.LoadScene("GameOver");
-                break;
-
-            case GameMode.first10000:
-                yield return new WaitUntil(() => maxScore >= 10000);
-                ChooseVictor.crossSceneInformation = leading.side;
-                SceneManager.LoadScene("GameOver");
-                break;
-        }
+    private static int gameModePoints(GameMode mode) {
+        return mode switch {
+            GameMode.first1000 => 1000,
+            GameMode.first5000 => 5000,
+            GameMode.first10000 => 10000,
+            _ => throw new ArgumentOutOfRangeException()
+        };
     }
 }

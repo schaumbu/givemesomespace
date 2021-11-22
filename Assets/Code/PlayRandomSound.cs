@@ -6,23 +6,22 @@ using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class PlayRandomSound : MonoBehaviour {
-    
-    public AudioSource source;
+    [SerializeField] private AudioSource source;
 
-    public AudioClip[] audioClips;
+    [SerializeField] private AudioClip[] audioClips;
 
     private void Awake() {
         source = GetComponent<AudioSource>();
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start() {
+    private void Start() {
         source.clip = audioClips[Random.Range(0, audioClips.Length)];
         source.PlayOneShot(source.clip);
     }
-    
+
     private void Update() {
-        if(!source.isPlaying)
+        if (!source.isPlaying)
             Destroy(gameObject);
     }
 }

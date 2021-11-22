@@ -1,12 +1,13 @@
+using System;
+using Code;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuButton : MonoBehaviour
-{
-    public ButtonType buttonType;
-    
-    public enum ButtonType {
+public class MenuButton : MonoBehaviour {
+    [SerializeField] private ButtonType buttonType;
+
+    private enum ButtonType {
         startGame,
         quitGame,
         openMain,
@@ -14,9 +15,8 @@ public class MenuButton : MonoBehaviour
         first5000,
         first10000
     }
-    
-    public void onClick() {
 
+    public void onClick() {
         switch (buttonType) {
             case ButtonType.startGame:
                 SceneManager.LoadScene("ModeMenu");
@@ -28,18 +28,21 @@ public class MenuButton : MonoBehaviour
                 Application.Quit();
                 break;
             case ButtonType.first1000:
-                ChooseGameMode.crossSceneInformation = GameModeManager.GameMode.first1000;
-                SceneManager.LoadScene("InGame");
+                loadInGame(GameModeManager.GameMode.first1000);
                 break;
             case ButtonType.first5000:
-                ChooseGameMode.crossSceneInformation = GameModeManager.GameMode.first5000;
-                SceneManager.LoadScene("InGame");
+                loadInGame(GameModeManager.GameMode.first5000);
                 break;
             case ButtonType.first10000:
-                ChooseGameMode.crossSceneInformation = GameModeManager.GameMode.first10000;
-                SceneManager.LoadScene("InGame");
+                loadInGame(GameModeManager.GameMode.first10000);
                 break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
-        
+    }
+
+    private static void loadInGame(GameModeManager.GameMode mode) {
+        Persistent.gameMode = mode;
+        SceneManager.LoadScene("InGame");
     }
 }

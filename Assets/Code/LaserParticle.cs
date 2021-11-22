@@ -5,12 +5,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class LaserParticle : MonoBehaviour {
-    public float after = .1f;
+    [SerializeField] private float after = .1f;
     private float timer = 0;
     private Color start;
     private SpriteRenderer ren;
 
-    void Start() {
+    private void Start() {
         ren = GetComponent<SpriteRenderer>();
         start = ren.color;
         Destroy(gameObject, after);
