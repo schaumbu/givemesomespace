@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using UnityEditor;
 using UnityEngine;
 
 namespace Code {
@@ -12,8 +11,8 @@ namespace Code {
             }
         }
 
-        public static PlayerCrosshair.LeftRight winner {
-            get => JsonConvert.DeserializeObject<PlayerCrosshair.LeftRight>(PlayerPrefs.GetString(nameof(winner)));
+        public static LeftRight winner {
+            get => JsonConvert.DeserializeObject<LeftRight>(PlayerPrefs.GetString(nameof(winner)));
             set {
                 PlayerPrefs.SetString(nameof(winner), JsonConvert.SerializeObject(value));
                 PlayerPrefs.Save();

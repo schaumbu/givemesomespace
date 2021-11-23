@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class Shadow : MonoBehaviour {
     private readonly Vector2 offset = new(.1f, -.125f);
 

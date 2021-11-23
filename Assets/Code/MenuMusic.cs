@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,8 +18,6 @@ public class MenuMusic : MonoBehaviour {
     }
 
     private void Update() {
-        if (!start.isPlaying && !music.isPlaying) {
-            Destroy(gameObject);
-        }
+        if (!start.isPlaying && !music.isPlaying) Destroy(gameObject);
     }
 }

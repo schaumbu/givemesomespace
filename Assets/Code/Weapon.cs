@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -10,9 +9,12 @@ public class Weapon : MonoBehaviour {
     [SerializeField] public Transform soulTarget;
     [SerializeField] private int order;
     [SerializeField] private GameObject weaponSound;
-    public bool used => player != null;
+    [SerializeField] private LeftRight side;
 
+    public int score { get; private set; }
     private PlayerCrosshair player;
+    private bool used => player != null;
+    public LeftRight originSide => side;
 
 
     private void Start() {
@@ -20,14 +22,20 @@ public class Weapon : MonoBehaviour {
     }
 
     private void Update() {
-        textMesh.text = player ? player.score.ToString() : "??????";
+        textMesh.text = player ? score.ToString() : "??????";
     }
 
-    public void useBy(PlayerCrosshair player) {
+    public Weapon useBy(PlayerCrosshair player) {
+        if (player == null) return null;
         this.player = player;
+        return this;
     }
 
     public static Weapon grabFree() {
         return FindObjectsOfType<Weapon>().OrderBy(x => x.order).First(x => !x.used);
+    }
+
+    public void addScore(int addition) {
+        score += addition;
     }
 }

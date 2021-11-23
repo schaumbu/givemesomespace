@@ -2,19 +2,9 @@ using System;
 using Code;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MenuButton : MonoBehaviour {
     [SerializeField] private ButtonType buttonType;
-
-    private enum ButtonType {
-        startGame,
-        quitGame,
-        openMain,
-        first1000,
-        first5000,
-        first10000
-    }
 
     public void onClick() {
         switch (buttonType) {
@@ -44,5 +34,14 @@ public class MenuButton : MonoBehaviour {
     private static void loadInGame(GameModeManager.GameMode mode) {
         Persistent.gameMode = mode;
         SceneManager.LoadScene("InGame");
+    }
+
+    private enum ButtonType {
+        startGame,
+        quitGame,
+        openMain,
+        first1000,
+        first5000,
+        first10000
     }
 }

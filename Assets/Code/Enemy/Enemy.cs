@@ -1,42 +1,48 @@
 using System.Collections;
 using System.Linq;
+using Code.Enemy;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Collider2D), typeof(SpriteRenderer), typeof(EntityOrder))]
 public class Enemy : MonoBehaviour {
     [SerializeField] private int lifePoints = 1;
     [SerializeField] protected float speed = 1;
     [SerializeField] private int hitScore;
     [SerializeField] private int lastHitScore;
     [SerializeField] private bool blinkable = true;
-    [SerializeField] public int collisionOrder = 0;
-    [SerializeField] private GameObject explosion;
-    [SerializeField] private GameObject soul;
-    [SerializeField] private GameObject deathSound;
-    protected Bounds spawnBounds => new Bounds(bounds.center, bounds.size - Vector3.one * .1f);
+    [SerializeField] private GameObject? explosion = null;
+    [SerializeField] private GameObject? soul = null;
+    [SerializeField] private GameObject? deathSound = null;
 
-    private bool inside => Camera.main.orthographicBounds().Intersects(bounds);
+    private SpriteRenderer spriteRenderer = null!;
+    private EntityOrder entityOrder = null!;
+    private Weapon? lastHit;
+    private bool blink;
+    public int order => entityOrder.order;
+
+    private bool inside => Camera.main!.orthographicBounds().Intersects(bounds);
 
     private Bounds bounds => GetComponent<Collider2D>().bounds;
-    private PlayerCrosshair lastHit;
-    private bool blink;
-    private SpriteRenderer spriteRenderer;
+    protected Bounds spawnBounds => new(bounds.center, bounds.size - Vector3.one * .1f);
+
+    private void Awake() {
+        entityOrder = GetComponent<EntityOrder>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public virtual void Start() {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(lifeTimeRoutine());
         StartCoroutine(lifePointsRoutine());
     }
 
-    public virtual void Update() {
-        spriteRenderer.sortingOrder = (int) (transform.position.y * 100 + collisionOrder * 10000);
-    }
+    public virtual void Update() { }
 
     private void OnDestroy() {
         StopAllCoroutines();
     }
 
-    public void onHit(PlayerCrosshair origin) {
+    public void onHit(Weapon origin) {
         if (!blink) {
             lifePoints--;
             lastHit = origin;
@@ -66,10 +72,16 @@ public class Enemy : MonoBehaviour {
 
     private IEnumerator lifePointsRoutine() {
         yield return new WaitWhile(() => lifePoints > 0);
-        lastHit.addScore(lastHitScore);
+        Assert.IsNotNull(explosion);
+        Assert.IsNotNull(soul);
+        Assert.IsNotNull(deathSound);
+        var position = transform.position;
+        if (lastHit != null) {
+            lastHit.addScore(lastHitScore);
+            Instantiate(soul, position, Quaternion.identity).GetComponent<Soul>().init(lastHit);
+        }
+        Instantiate(explosion, position, Quaternion.identity);
         Instantiate(deathSound);
-        Instantiate(explosion, transform.position, Quaternion.identity);
-        Instantiate(soul, transform.position, Quaternion.identity).GetComponent<Soul>().target = lastHit.weapon;
         Destroy(gameObject);
     }
 }

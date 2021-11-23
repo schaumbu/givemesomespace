@@ -3,14 +3,19 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
+using Object = UnityEngine.Object;
 
-public class @Actions : IInputActionCollection, IDisposable
-{
-    public InputActionAsset asset { get; }
-    public @Actions()
-    {
+public class Actions : IInputActionCollection, IDisposable {
+    // inGame
+    private readonly InputActionMap m_inGame;
+    private readonly InputAction m_inGame_move;
+    private readonly InputAction m_inGame_shoot;
+    private IInGameActions m_InGameActionsCallbackInterface;
+
+    public Actions() {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""Actions"",
     ""maps"": [
@@ -163,97 +168,101 @@ public class @Actions : IInputActionCollection, IDisposable
     ""controlSchemes"": []
 }");
         // inGame
-        m_inGame = asset.FindActionMap("inGame", throwIfNotFound: true);
-        m_inGame_shoot = m_inGame.FindAction("shoot", throwIfNotFound: true);
-        m_inGame_move = m_inGame.FindAction("move", throwIfNotFound: true);
+        m_inGame = asset.FindActionMap("inGame", true);
+        m_inGame_shoot = m_inGame.FindAction("shoot", true);
+        m_inGame_move = m_inGame.FindAction("move", true);
     }
 
-    public void Dispose()
-    {
-        UnityEngine.Object.Destroy(asset);
+    public InputActionAsset asset { get; }
+    public InGameActions inGame => new(this);
+
+    public void Dispose() {
+        Object.Destroy(asset);
     }
 
-    public InputBinding? bindingMask
-    {
+    public InputBinding? bindingMask {
         get => asset.bindingMask;
         set => asset.bindingMask = value;
     }
 
-    public ReadOnlyArray<InputDevice>? devices
-    {
+    public ReadOnlyArray<InputDevice>? devices {
         get => asset.devices;
         set => asset.devices = value;
     }
 
     public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
-    public bool Contains(InputAction action)
-    {
+    public bool Contains(InputAction action) {
         return asset.Contains(action);
     }
 
-    public IEnumerator<InputAction> GetEnumerator()
-    {
+    public IEnumerator<InputAction> GetEnumerator() {
         return asset.GetEnumerator();
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
+    IEnumerator IEnumerable.GetEnumerator() {
         return GetEnumerator();
     }
 
-    public void Enable()
-    {
+    public void Enable() {
         asset.Enable();
     }
 
-    public void Disable()
-    {
+    public void Disable() {
         asset.Disable();
     }
 
-    // inGame
-    private readonly InputActionMap m_inGame;
-    private IInGameActions m_InGameActionsCallbackInterface;
-    private readonly InputAction m_inGame_shoot;
-    private readonly InputAction m_inGame_move;
-    public struct InGameActions
-    {
-        private @Actions m_Wrapper;
-        public InGameActions(@Actions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @shoot => m_Wrapper.m_inGame_shoot;
-        public InputAction @move => m_Wrapper.m_inGame_move;
-        public InputActionMap Get() { return m_Wrapper.m_inGame; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
+    public struct InGameActions {
+        private readonly Actions m_Wrapper;
+
+        public InGameActions(Actions wrapper) {
+            m_Wrapper = wrapper;
+        }
+
+        public InputAction shoot => m_Wrapper.m_inGame_shoot;
+        public InputAction move => m_Wrapper.m_inGame_move;
+
+        public InputActionMap Get() {
+            return m_Wrapper.m_inGame;
+        }
+
+        public void Enable() {
+            Get().Enable();
+        }
+
+        public void Disable() {
+            Get().Disable();
+        }
+
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(InGameActions set) { return set.Get(); }
-        public void SetCallbacks(IInGameActions instance)
-        {
-            if (m_Wrapper.m_InGameActionsCallbackInterface != null)
-            {
-                @shoot.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                @shoot.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                @shoot.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
-                @move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                @move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
-                @move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+
+        public static implicit operator InputActionMap(InGameActions set) {
+            return set.Get();
+        }
+
+        public void SetCallbacks(IInGameActions instance) {
+            if (m_Wrapper.m_InGameActionsCallbackInterface != null) {
+                shoot.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                shoot.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                shoot.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnShoot;
+                move.started -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                move.performed -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
+                move.canceled -= m_Wrapper.m_InGameActionsCallbackInterface.OnMove;
             }
+
             m_Wrapper.m_InGameActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                @shoot.started += instance.OnShoot;
-                @shoot.performed += instance.OnShoot;
-                @shoot.canceled += instance.OnShoot;
-                @move.started += instance.OnMove;
-                @move.performed += instance.OnMove;
-                @move.canceled += instance.OnMove;
+            if (instance != null) {
+                shoot.started += instance.OnShoot;
+                shoot.performed += instance.OnShoot;
+                shoot.canceled += instance.OnShoot;
+                move.started += instance.OnMove;
+                move.performed += instance.OnMove;
+                move.canceled += instance.OnMove;
             }
         }
     }
-    public InGameActions @inGame => new InGameActions(this);
-    public interface IInGameActions
-    {
+
+    public interface IInGameActions {
         void OnShoot(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
     }

@@ -1,7 +1,6 @@
 using UnityEngine;
 
 public class EnemyBehaviourTwist : Enemy {
-
     public float minAngle = 45;
     public float maxAngle = 90;
     private Vector3 direction = Vector3.up;
@@ -17,17 +16,15 @@ public class EnemyBehaviourTwist : Enemy {
         var xMin = cameraBounds.min.y + spawnBounds.size.y / 2;
         var xMax = cameraBounds.max.y - spawnBounds.size.y / 2;
         transform.position = new Vector3(Random.Range(xMin, xMax), y) + transform.position - spawnBounds.center;
-        
+
         rotAngle = Random.Range(minAngle, maxAngle);
-        if (Random.Range(0, 2) == 0) {
-            rotAngle *= -1;
-        }
+        if (Random.Range(0, 2) == 0) rotAngle *= -1;
     }
 
     public override void Update() {
         base.Update();
         direction = Quaternion.AngleAxis(rotAngle * Time.deltaTime, Vector3.forward) * direction;
-        
+
         transform.position += Time.deltaTime * speed * direction;
     }
 }

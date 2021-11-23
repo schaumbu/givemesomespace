@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemyBehaviourAngle : Enemy {
     public float rotationSpeed = 50;
     private Vector2 direction;
+
     public override void Start() {
         base.Start();
         var cameraBounds = Camera.main.orthographicBounds();
@@ -24,12 +25,14 @@ public class EnemyBehaviourAngle : Enemy {
             transform.position = new Vector3(Random.Range(xMin, xMax), y) + transform.position - spawnBounds.center;
         }
 
-        direction = (transform.position - (cameraBounds.center + (Vector3)Random.insideUnitCircle * (cameraBounds.size.magnitude/3))).normalized;
+        direction = (transform.position -
+                     (cameraBounds.center + (Vector3) Random.insideUnitCircle * (cameraBounds.size.magnitude / 3)))
+            .normalized;
     }
 
     public override void Update() {
         base.Update();
-        transform.Rotate(0,0,rotationSpeed * Time.deltaTime);
-        transform.position += (Vector3)direction * Time.deltaTime * -speed;
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        transform.position += (Vector3) direction * Time.deltaTime * -speed;
     }
 }

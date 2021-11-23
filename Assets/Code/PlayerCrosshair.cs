@@ -1,32 +1,32 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerCrosshair : MonoBehaviour {
     [SerializeField] private float speed = 1;
-    [SerializeField] private GameObject bullet;
+    [FormerlySerializedAs("bullet")] [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float movementActivation = 14;
-    [SerializeField] public LeftRight side;
-
-    public int score { get; private set; }
-    public Weapon weapon { get; private set; }
+    public LeftRight side => weapon.originSide;
 
     private Vector2 move = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
 
-    public enum LeftRight {
-        left,
-        right
-    }
+    public Weapon weapon { get; private set; }
+
 
     private void Awake() {
-        weapon = Weapon.grabFree();
-        weapon.useBy(this);
-        GetComponent<SpriteRenderer>().color = weapon.color;
-        // todo
-        side = FindObjectsOfType<PlayerCrosshair>().Length == 1 ? LeftRight.left : LeftRight.right;
+        weapon = Weapon.grabFree().useBy(this);
+    }
+
+    private void Start() {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = weapon.color;
     }
 
     private void Update() {
@@ -39,32 +39,37 @@ public class PlayerCrosshair : MonoBehaviour {
 
     [UsedImplicitly]
     public void OnShoot() {
-        var blt = Instantiate(bullet, weapon.origin.transform.position, Quaternion.identity);
-        var component = blt.GetComponent<Bullet>();
-        component.target = new Vector2(transform.position.x, transform.position.y);
+        showBullet();
+        testBulletCollision();
+    }
 
+    private void testBulletCollision() {
         var colliders = Physics2D.OverlapPointAll(transform.position);
+        testEnemyCollision(colliders);
+        testMenuCollision(colliders);
+    }
+
+    private void testEnemyCollision(IEnumerable<Collider2D> colliders) {
         var enemy = colliders
             .Where(x => x.GetComponent<Enemy>() != null)
             .Select(x => x.GetComponent<Enemy>())
-            .OrderBy(x => x.collisionOrder).LastOrDefault();
-        if (enemy != null) {
-            enemy.onHit(this);
-        }
+            .OrderBy(x => x.order).LastOrDefault();
+        if (enemy != null) enemy.onHit(weapon);
+    }
 
+    private static void testMenuCollision(IEnumerable<Collider2D> colliders) {
         var buttons = colliders.Where(x => x.GetComponent<MenuButton>() != null)
             .Select(x => x.GetComponent<MenuButton>());
-        foreach (var button in buttons) {
-            button.onClick();
-        }
+        foreach (var button in buttons) button.onClick();
+    }
+
+    private void showBullet() {
+        var bullet = Instantiate(bulletPrefab, weapon.origin.transform.position, Quaternion.identity);
+        bullet.GetComponent<Bullet>().init(transform.position);
     }
 
     [UsedImplicitly]
     public void OnMove(InputValue value) {
         move = value.Get<Vector2>();
-    }
-
-    public void addScore(int addition) {
-        score += addition;
     }
 }

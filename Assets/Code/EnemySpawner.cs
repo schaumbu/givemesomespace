@@ -9,13 +9,7 @@ public class EnemySpawner : MonoBehaviour {
     public float seconds = 1;
     public float randomWait = 1;
     public int maxEnemyCount = 4;
-    private int enemyCount => FindObjectsOfType<Enemy>().Length;
-
-    [Serializable]
-    public struct EnemyType {
-        public GameObject enemy;
-        public float probability;
-    }
+    private static int enemyCount => FindObjectsOfType<Enemy>().Length;
 
     private void Start() {
         StartCoroutine(spawnRoutine());
@@ -25,13 +19,14 @@ public class EnemySpawner : MonoBehaviour {
         while (true) {
             if (Random.Range(0, 100) == 0) {
                 // spawn big wave
-                yield return new WaitForSeconds(seconds*4 + Random.Range(0, randomWait));
+                yield return new WaitForSeconds(seconds * 4 + Random.Range(0, randomWait));
 
-                for (int i = 0; i < maxEnemyCount*2; i++) {
-                    yield return new WaitForSeconds(seconds*.2f + Random.Range(0, randomWait * .1f));
+                for (var i = 0; i < maxEnemyCount * 2; i++) {
+                    yield return new WaitForSeconds(seconds * .2f + Random.Range(0, randomWait * .1f));
                     spawnEnemy();
                 }
             }
+
             yield return new WaitUntil(() => enemyCount < maxEnemyCount);
             yield return new WaitForSeconds(seconds + Random.Range(0, randomWait));
             spawnEnemy();
@@ -44,15 +39,19 @@ public class EnemySpawner : MonoBehaviour {
 
         var partialSum = 0f;
         foreach (var type in enemyTypes) {
-            if (partialSum <= diceRoll && diceRoll < partialSum + type.probability) {
-                spawnType(type);
-            }
+            if (partialSum <= diceRoll && diceRoll < partialSum + type.probability) spawnType(type);
 
             partialSum += type.probability;
         }
     }
 
-    private void spawnType(EnemyType enemyType) {
+    private static void spawnType(EnemyType enemyType) {
         Instantiate(enemyType.enemy);
+    }
+
+    [Serializable]
+    public struct EnemyType {
+        public GameObject enemy;
+        public float probability;
     }
 }

@@ -14,9 +14,7 @@ public class EnemyBehaviourMoorhuhn : Enemy {
         var yMax = cameraBounds.max.y - spawnBounds.size.y / 2;
         transform.position = new Vector3(x, Random.Range(yMin, yMax)) + transform.position - spawnBounds.center;
 
-        if (direction > 0) {
-            transform.Rotate(0,180,0);
-        }
+        if (direction > 0) transform.Rotate(0, 180, 0);
     }
 
     public override void Update() {
